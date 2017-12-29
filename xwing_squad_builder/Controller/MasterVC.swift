@@ -62,6 +62,7 @@ extension MasterVC: SquadViewerVCDelegate {
 
     func closeSquadViewer() {
         remove(asChildViewController: squadViewerVC)
+        // m
     }
 }
 
