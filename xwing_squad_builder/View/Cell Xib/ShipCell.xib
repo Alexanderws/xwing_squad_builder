@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ShipCell" customModule="x_wing_squad_builder" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="280" height="39.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9O4-ca-IO5" userLabel="rootView">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="40"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="psS-8y-5uP" userLabel="topView">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="20"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WlE-aH-HAI" userLabel="shipLogoIV">
+                                        <rect key="frame" x="4" y="3" width="14" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="14" id="8My-JC-FTF"/>
+                                            <constraint firstAttribute="height" constant="14" id="zGM-NQ-fns"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raider-class Corvette (Fore)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r7a-V4-xLX" userLabel="shipNameLbl">
+                                        <rect key="frame" x="26" y="0.0" width="214" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="214" id="Y4O-CN-dXI"/>
+                                            <constraint firstAttribute="height" constant="20" id="liI-tW-42w"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="r7a-V4-xLX" firstAttribute="top" secondItem="psS-8y-5uP" secondAttribute="top" id="6ae-rK-gMs"/>
+                                    <constraint firstItem="r7a-V4-xLX" firstAttribute="leading" secondItem="WlE-aH-HAI" secondAttribute="trailing" constant="8" id="7sV-6U-uAk"/>
+                                    <constraint firstItem="WlE-aH-HAI" firstAttribute="top" secondItem="psS-8y-5uP" secondAttribute="top" constant="3" id="9Vx-bA-SvH"/>
+                                    <constraint firstAttribute="bottom" secondItem="r7a-V4-xLX" secondAttribute="bottom" id="GGc-JZ-hx4"/>
+                                    <constraint firstItem="WlE-aH-HAI" firstAttribute="leading" secondItem="psS-8y-5uP" secondAttribute="leading" constant="4" id="OGU-fE-nPM"/>
+                                    <constraint firstAttribute="height" constant="20" id="Pv3-zh-IZH"/>
+                                    <constraint firstAttribute="bottom" secondItem="WlE-aH-HAI" secondAttribute="bottom" constant="3" id="eLj-ye-kmD"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="psS-8y-5uP" secondAttribute="trailing" id="glr-7T-8LN"/>
+                            <constraint firstItem="psS-8y-5uP" firstAttribute="leading" secondItem="9O4-ca-IO5" secondAttribute="leading" id="iSp-qx-P1c"/>
+                            <constraint firstItem="psS-8y-5uP" firstAttribute="top" secondItem="9O4-ca-IO5" secondAttribute="top" id="vFC-AR-eAl"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="9O4-ca-IO5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="IrJ-Rh-tO1"/>
+                    <constraint firstAttribute="bottom" secondItem="9O4-ca-IO5" secondAttribute="bottom" id="KOx-Of-V5u"/>
+                    <constraint firstItem="9O4-ca-IO5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="fIv-DN-asq"/>
+                    <constraint firstAttribute="trailing" secondItem="9O4-ca-IO5" secondAttribute="trailing" id="y1K-SF-JIX"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="shipLogoIV" destination="WlE-aH-HAI" id="MTH-Jq-FTl"/>
+                <outlet property="shipNameLbl" destination="r7a-V4-xLX" id="QeA-BX-SKc"/>
+            </connections>
+            <point key="canvasLocation" x="-10" y="89"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Pilot" representedClassName=".Pilot" syncable="YES">
+        <attribute name="abilityText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="faction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pilotSkill" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="shipName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="squadCost" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="unique" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="upgradeSlots" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="xws" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ship" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Ship" inverseName="pilot" inverseEntity="Ship" syncable="YES"/>
+    </entity>
+    <entity name="Ship" representedClassName=".Ship" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="xws" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="pilot" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Pilot" inverseName="ship" inverseEntity="Pilot" syncable="YES"/>
+    </entity>
+    <entity name="Upgrade" representedClassName="Upgrade" syncable="YES" codeGenerationType="class">
+        <attribute name="attack" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="effect" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="faction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="limited" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="range" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="size" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="slotCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="slotType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="specialEffect" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="squadCost" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="squadLimit" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="xws" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Pilot" positionX="-54" positionY="18" width="128" height="208"/>
+        <element name="Ship" positionX="-387" positionY="-15" width="128" height="105"/>
+        <element name="Upgrade" positionX="-216" positionY="90" width="128" height="270"/>
+    </elements>
+</model>
