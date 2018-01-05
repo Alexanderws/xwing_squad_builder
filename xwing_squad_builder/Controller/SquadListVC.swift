@@ -46,8 +46,6 @@ class SquadListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         initSquadList()
         initShipPilotData()
-        
-        print("viewWillAppear")
     }
     
     func initSquadList() {
@@ -134,8 +132,7 @@ extension SquadListVC: UICollectionViewDelegate, UICollectionViewDataSource, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let squadCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SquadCell", for: indexPath) as! SquadCell
         let squad = squadList[indexPath.row]
-        squadCell.configureCell(squadName: squad.name, squadCost: squad.squadCost)
-        print(squad.name)
+        squadCell.initUI(squadName: squad.name, squadCost: squad.squadCost)
         return squadCell
     }
 

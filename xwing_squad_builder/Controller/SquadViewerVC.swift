@@ -17,13 +17,14 @@ protocol SquadViewerVCDelegate: class {
 
 
 class SquadViewerVC: UIViewController {
-
     
     @IBOutlet weak var squadNameLbl: UILabel!
     @IBOutlet weak var squadCostLbl: UILabel!
     @IBOutlet weak var attackValueLbl: UILabel!
+    @IBOutlet weak var agilityValueLbl: UILabel!
     @IBOutlet weak var shieldHullValueLbl: UILabel!
     @IBOutlet weak var winPercentageLbl: UILabel!
+    @IBOutlet weak var timesPlayedLbl: UILabel!
     @IBOutlet weak var squadPilotsCV: UICollectionView!
     
     var shipSelectVC: ModalSelectionVC!
@@ -52,7 +53,7 @@ class SquadViewerVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         initSquadPilots()
-        refreshSquadView()
+        updateUI()
     }
 
     func initSquadPilots() {
@@ -61,40 +62,24 @@ class SquadViewerVC: UIViewController {
         squadPilotsCV.register(UINib(nibName: "SquadPilotCell", bundle: nil), forCellWithReuseIdentifier: "SquadPilotCell")
     }
     
-    func refreshSquadView() {
+    func updateUI() {
         squadNameLbl.text = currentSquad.name
         squadCostLbl.text = "\(currentSquad.squadCost)/\(currentSquad.squadCostLimit!)"
-        attackValueLbl.text = "ATT: \(currentSquad.attackValue)"
-        shieldHullValueLbl.text = "S/H: \(currentSquad.shieldHullValue)"
-        winPercentageLbl.text = "WIN: \(currentSquad.winPercentage)%"
+        attackValueLbl.text = "\(currentSquad.attackValue)"
+        agilityValueLbl.text = "\(currentSquad.agilityValue)"
+        shieldHullValueLbl.text = "\(currentSquad.shieldHullValue)"
+        winPercentageLbl.text = "\(currentSquad.winPercentage)%"
+        timesPlayedLbl.text = "\(currentSquad.timesPlayed)"
     }
     
     func presentShipSelectVC(withFaction: Faction) {
         shipSelectVC = ModalSelectionVC(nibName: "ModalSelectionVC", bundle: nil, withFaction: withFaction, withSelectionType: SelectionType.ship, selectionDelegate: self)
-        //shipSelectVC.modalPresentationStyle = .custom
-        //self.present(shipSelectVC, animated: true, completion: nil)
-        add(asChildViewController: shipSelectVC, atLevel: 4)
+        ViewManager.add(asChildViewController: shipSelectVC, inView: self.view, fromViewController: self, atLevel: 6)
     }
     
     func transitionShipToPilotVC(withFaction: Faction) {
         pilotSelectVC = ModalSelectionVC(nibName: "ModalSelectionVC", bundle: nil, withFaction: withFaction, withSelectionType: SelectionType.pilot, selectionDelegate: self)
-        //pilotSelectVC.modalPresentationStyle = .overCurrentContext
-        //self.present(pilotSelectVC, animated: false, completion: nil)
-        add(asChildViewController: pilotSelectVC, atLevel: 5)
-    }
-    
-    private func add(asChildViewController viewController: UIViewController, atLevel: Int) {
-        addChildViewController(viewController)
-        view.insertSubview(viewController.view, at: atLevel)
-        viewController.view.frame = view.bounds
-        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        viewController.didMove(toParentViewController: self)
-    }
-    
-    private func remove(asChildViewController viewController: UIViewController) {
-        viewController.willMove(toParentViewController: nil)
-        viewController.view.removeFromSuperview()
-        viewController.removeFromParentViewController()
+        ViewManager.add(asChildViewController: pilotSelectVC, inView: self.view, fromViewController: self, atLevel: 7)
     }
     
     @IBAction func draggableBtnPressed(_ sender: Any) {
@@ -112,7 +97,7 @@ class SquadViewerVC: UIViewController {
     
 }
 
-// MARK: ShipSelectVCDelegate extension
+// MARK: - ShipSelectVCDelegate Methods
 extension SquadViewerVC: ModalSelectionVCDelegate {
         
     func getSelectedShip() -> Ship {
@@ -127,22 +112,23 @@ extension SquadViewerVC: ModalSelectionVCDelegate {
     func didSelect(pilot: Pilot) {
         let newSquadPilot = SquadPilot(fromPilot: pilot)
         currentSquad.addPilot(pilot: newSquadPilot)
-        remove(asChildViewController: shipSelectVC)
-        remove(asChildViewController: pilotSelectVC)
+        ViewManager.remove(asChildViewController: shipSelectVC)
+        ViewManager.remove(asChildViewController: pilotSelectVC)
         squadPilotsCV.reloadData()
     }
     
     func cancelPressed(senderType: SelectionType) {
         if senderType == .ship {
-            remove(asChildViewController: shipSelectVC)
+            ViewManager.remove(asChildViewController: shipSelectVC)
         }
         if senderType == .pilot {
-            remove(asChildViewController: pilotSelectVC)
+            ViewManager.remove(asChildViewController: pilotSelectVC)
         }
     }
 }
 
 
+// MARK: - UICollectionView Methods
 extension SquadViewerVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return currentSquad.pilots.count
@@ -151,7 +137,7 @@ extension SquadViewerVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let squadPilotCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SquadPilotCell", for: indexPath) as! SquadPilotCell
         let pilot = currentSquad.pilots[indexPath.row]
-        squadPilotCell.configureCell(pilot: pilot)
+        squadPilotCell.initUI(pilot: pilot)
         return squadPilotCell
     }
     

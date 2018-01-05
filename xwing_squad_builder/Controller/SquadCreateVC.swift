@@ -46,7 +46,7 @@ class SquadCreateVC: UIViewController {
     
     func checkInputs() -> Bool {
         if !squadNameTF.hasText {
-            displayMessage(title: "No Name Entered", message: "Enter a name for your new squad.", actionName: "Dismiss", self: self)
+            ViewManager.displayMessage(title: "No Name Entered", message: "Enter a name for your new squad.", actionName: "Dismiss", viewController: self)
             return false
         }
         return true

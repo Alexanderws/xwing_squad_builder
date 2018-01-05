@@ -75,8 +75,8 @@ class ModalSelectionVC: UIViewController {
 
     func initLayout() {
         containerView.translatesAutoresizingMaskIntoConstraints = true
-        containerView.frame.size.height = ModalSelectionLayout.height
-        containerView.frame.size.width = ModalSelectionLayout.width
+        containerView.frame.size.height = LayoutManager.modalSelectionVCheight
+        containerView.frame.size.width = LayoutManager.modalSelectionVCwidth
         containerView.center.x = self.view.center.x
         containerView.center.y = self.view.center.y
     }
@@ -120,13 +120,13 @@ extension ModalSelectionVC: UITableViewDataSource, UITableViewDelegate {
         case .ship:
             let cell = selectionTableView.dequeueReusableCell(withIdentifier: "ShipCell", for: indexPath) as! ShipCell
             if let ship = shipList?[indexPath.row] {
-                cell.configureCell(shipName: ship.name)
+                cell.initUI(shipName: ship.name)
             }
             return cell
         case .pilot: // TODO: Create pilot cell and initation function
             let cell = selectionTableView.dequeueReusableCell(withIdentifier: "PilotCell", for: indexPath) as! PilotCell
            if let pilot = pilotList?[indexPath.row] {
-                cell.configureCell(pilot: pilot)
+                cell.initUI(pilot: pilot)
             }
             return cell
         default:

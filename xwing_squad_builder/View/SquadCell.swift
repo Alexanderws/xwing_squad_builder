@@ -16,10 +16,9 @@ class SquadCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
-    func configureCell(squadName: String, squadCost: Int) {
+    func initUI(squadName: String, squadCost: Int) {
         squadNameLbl.text = squadName
         squadCostLbl.text = "\(squadCost)"
     }

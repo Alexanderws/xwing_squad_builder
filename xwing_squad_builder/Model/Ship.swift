@@ -22,6 +22,7 @@ class Ship: Object {
     
     let pilots = List<Pilot>()
     let actions = List<String>()
+    let upgrades = List<Upgrade>()
     
     override static func primaryKey() -> String? {
         return "id"

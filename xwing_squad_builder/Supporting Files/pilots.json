@@ -2894,9 +2894,9 @@
   "points": 21,
   "faction": "Rebel Alliance",
   "slots": [
+            "Elite",
             "Turret",
-            "Crew",
-            "Elite"
+            "Crew"
             ],
   "id": 175,
   "xws": "sabinewren"

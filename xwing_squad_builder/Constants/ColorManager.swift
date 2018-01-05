@@ -17,18 +17,39 @@ enum AppTheme {
 
 class ColorManager {
     
-    var currentTheme = AppTheme.rebel
+    static var currentTheme = AppTheme.rebel
     
-    var primaryColor: UIColor {
+    
+    static var primaryColor: UIColor {
         get {
             switch currentTheme {
             case .rebel:
-                return UIColor.black
+                return UIColor.whiteSmoke
+            default:
+                return UIColor.white
+            }
+        }
+    }
+    
+    static var secondaryColor: UIColor {
+        get {
+            switch currentTheme {
+            case .rebel:
+                return UIColor.mako
             default:
                 return UIColor.black
             }
         }
     }
     
-    
+    static var detailColor: UIColor {
+        get {
+            switch currentTheme {
+            case .rebel:
+                return UIColor.persimmon
+            default:
+                return UIColor.orange
+            }
+        }
+    }
 }

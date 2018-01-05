@@ -8,6 +8,27 @@
 
 import Foundation
 
+enum UpgradeImageName: String, Codable {
+    case elite = "icon_upgrade_elite_"
+    case turret = "icon_upgrade_turret_"
+    case torpedo = "icon_upgrade_torpedo_"
+    case astromech = "icon_upgrade_astromech_"
+    case missile = "icon_upgrade_missile_"
+    case crew = "icon_upgrade_crew_"
+    case cannon = "icon_upgrade_cannon_"
+    case bomb = "icon_upgrade_bomb_"
+    case system = "icon_upgrade_system_"
+    case cargo = "icon_upgrade_cargo_"
+    case hardpoint = "icon_upgrade_hardpoint_"
+    case team = "icon_upgrade_team_"
+    case illicit = "icon_upgrade_illicit_"
+    case salvagedAstromech = "icon_upgrade_salvaged_"
+    case title = "icon_upgrade_title_"
+    case tech = "icon_upgrade_tech_"
+    case modification = "icon_upgrade_modification_"
+    case unknown = "icon_upgrade_unknown_"
+}
+
 enum SelectionType: String, Codable {
     case ship = "Ship"
     case pilot = "Pilot"

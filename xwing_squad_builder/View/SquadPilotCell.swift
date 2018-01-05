@@ -29,7 +29,7 @@ class SquadPilotCell: UICollectionViewCell {
     }
     
     
-    func configureCell(pilot: SquadPilot) {
+    func initUI(pilot: SquadPilot) {
         self.pilotNameLbl.text = pilot.name
         self.pilotSkillLbl.text = String(pilot.pilotSkill)
         self.shipNameLbl.text = pilot.shipName

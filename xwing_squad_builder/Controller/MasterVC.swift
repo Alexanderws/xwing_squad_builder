@@ -34,7 +34,7 @@ class MasterVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         squadListVC = SquadListVC(nibName: "SquadListVC", bundle: nil, withDelegate: self)
-        add(asChildViewController: squadListVC, inView: containerView, fromViewController: self, atLevel: 2)
+        ViewManager.add(asChildViewController: squadListVC, inView: containerView, fromViewController: self, atLevel: 2)
     }
 
     
@@ -45,24 +45,21 @@ class MasterVC: UIViewController {
 extension MasterVC: SquadListVCDelegate {
     
     func showSquadViewer(withSquad: Squad) {
-        print("showSquadViewer")
         self.selectedSquad = withSquad
         squadViewerVC = SquadViewerVC(nibName: "SquadViewerVC", bundle: nil, withSquad: withSquad, withDelegate: self)
-        add(asChildViewController: squadViewerVC, inView: containerView, fromViewController: self, atLevel: 3)
+        ViewManager.add(asChildViewController: squadViewerVC, inView: containerView, fromViewController: self, atLevel: 3)
     }
 }
 
 extension MasterVC: SquadViewerVCDelegate {
     func showSquadPilot(withSquadPilot: SquadPilot) {
-        print("showSquadPilot")
         squadPilotVC = SquadPilotVC(nibName: "SquadPilotVC", bundle: nil, withPilot: withSquadPilot, withDelegate: self)
-        add(asChildViewController: squadPilotVC, inView: containerView, fromViewController: self, atLevel: 4)
+        ViewManager.add(asChildViewController: squadPilotVC, inView: containerView, fromViewController: self, atLevel: 4)
     }
     
 
     func closeSquadViewer() {
-        remove(asChildViewController: squadViewerVC)
-        // m
+        ViewManager.remove(asChildViewController: squadViewerVC)
     }
 }
 
@@ -76,7 +73,7 @@ extension MasterVC: SquadPilotVCDelegate {
     }
     
     func closeSquadPilot() {
-        remove(asChildViewController: squadPilotVC)
+        ViewManager.remove(asChildViewController: squadPilotVC)
     }
     
 }

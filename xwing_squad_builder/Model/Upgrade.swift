@@ -9,6 +9,15 @@
 import Foundation
 import RealmSwift
 
+class RealmFaction: Object {
+    @objc dynamic var type: String = ""
+    
+    convenience init(type: String) {
+        self.init()
+        self.type = type
+    }
+}
+
 class Upgrade: Object {
     
     @objc dynamic var name: String = ""
@@ -22,9 +31,11 @@ class Upgrade: Object {
     @objc dynamic var isUnique = false
     @objc dynamic var faction = Faction.mixed.rawValue
     @objc dynamic var isLimited = false
+    @objc dynamic var isDualCard = false
     @objc dynamic var shipSizeLimit = ""
     @objc dynamic var squadLimit = -1
     
+    let factions = List<RealmFaction>()
     let compatibleShips = List<Ship>()
     
     @objc dynamic var range = ""
@@ -40,7 +51,7 @@ class Upgrade: Object {
         return "id"
     }
     
-    convenience init(name: String, id: Int, upgradeType: String, slotCount: Int, squadCost: Int, text: String, xws: String, isUnique: Bool, faction: String, isLimited: Bool, shipSizeLimit: String, squadLimit: Int, range: String, attackValue: Int, effect: String, energyLimitIncrease: Int, hasSquadEffect: Bool, condition: String) {
+    convenience init(name: String, id: Int, upgradeType: String, slotCount: Int, squadCost: Int, text: String, xws: String, isUnique: Bool, factions: [String], isLimited: Bool, shipSizeLimit: String, squadLimit: Int, range: String, attackValue: Int, effect: String, energyLimitIncrease: Int, hasSquadEffect: Bool, condition: String, dualCard: Bool) {
         self.init()
         self.name = name
         self.id = id
@@ -50,7 +61,6 @@ class Upgrade: Object {
         self.text = text
         self.xws = xws
         self.isUnique = isUnique
-        self.faction = faction
         self.isLimited = isLimited
         self.shipSizeLimit = shipSizeLimit
         self.squadLimit = squadLimit
@@ -60,6 +70,12 @@ class Upgrade: Object {
         self.effect = effect
         self.energyLimitIncrease = energyLimitIncrease
         self.hasSquadEffect = hasSquadEffect
+        self.isDualCard = dualCard
+        
+        for faction in factions {
+            self.factions.append(RealmFaction(type: faction))
+        }
+        
     }
     
     

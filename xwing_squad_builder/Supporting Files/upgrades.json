@@ -2707,9 +2707,10 @@
   },
   {
     "slotCount": 1,
-    "text": "Side A: Decrease your pilot skill value by 1. /n /n Side B: Increase your pilot skill value by 1",
+    "text": "Side A: Decrease your pilot skill value by 1. /n /nSide B: Increase your pilot skill value by 1",
     "name": "Adaptability",
     "xws": "adaptability",
+    "dualCard": true,
     "points": 0,
     "slot": "Elite",
     "squadEffect": true,
@@ -3143,27 +3144,16 @@
   },
   {
     "slotCount": 1,
-    "text": "Increase your agility value by 1.<br /><br />After you execute a maneuver, you may flip this card.",
+ "text": "Side A: Increase your agility value by 1.<br /><br />After you execute a maneuver, you may flip this card. /n /nSide B: When you reveal a (0 [Stop]) maneuver, you may rotate your ship 180&deg;.<br /><br />After you execute a maneuver, you may flip this card.",
     "name": "Pivot Wing (Attack)",
     "xws": "pivotwing",
+    "dualCard": true,
     "points": 0,
     "slot": "Title",
     "ship": [
       "U-wing"
     ],
     "id": 271
-  },
-  {
-    "slotCount": 1,
-    "text": "When you reveal a (0 [Stop]) maneuver, you may rotate your ship 180&deg;.<br /><br />After you execute a maneuver, you may flip this card.",
-    "name": "Pivot Wing (Landing)",
-    "xws": "pivotwing",
-    "points": 0,
-    "slot": "Title",
-    "ship": [
-      "U-wing"
-    ],
-    "id": 272
   },
   {
     "slotCount": 1,
@@ -3615,19 +3605,26 @@
     "xws": "pulsedrayshield",
     "points": 2,
     "slot": "Modification",
-    "faction": "Scum and Villainy",
+    "faction": [
+        "Scum and Villainy",
+        "Rebel Alliance"
+    ],
     "id": 309
   },
   {
     "slotCount": 1,
- "text": "Side A: \nAttack: Attack 1 ship. If this attack hits, you must choose 1 other ship at Range 1 of the defender to suffer 1 damage. Then flip this card. \n \nSide B: \nAt the start of the Combat phase, you may receive a weapons disabled token to flip this card.",
+    "text": "Side A: Attack: Attack 1 ship. If this attack hits, you must choose 1 other ship at Range 1 of the defender to suffer 1 damage. Then flip this card. \n \nSide B: At the start of the Combat phase, you may receive a weapons disabled token to flip this card.",
     "name": "ARC Caster",
     "xws": "arccaster",
     "points": 2,
     "slot": "Cannon",
+    "dualCard": true,
     "range": "1",
     "attack": 4,
-    "faction": "Scum and Villainy",
+    "faction": [
+             "Scum and Villainy",
+             "Rebel Alliance"
+    ],
     "id": 310
   },
   {
@@ -3698,9 +3695,10 @@
   },
   {
     "slotCount": 1,
- "text": "Side A: \nAfter you perform a boost or barrel roll action, you may assign 1 focus or evade token to your ship. If you do, flip this card. \n \nSide B: \nAt the end of the Combat phase, you may spend 1 focus or evade token to flip this card.",
+    "text": "Side A: After you perform a boost or barrel roll action, you may assign 1 focus or evade token to your ship. If you do, flip this card. \n \nSide B: At the end of the Combat phase, you may spend 1 focus or evade token to flip this card.",
     "name": "Intensity",
     "xws": "intensity",
+    "dualCard": true,
     "points": 2,
     "slot": "Elite",
     "id": 317,

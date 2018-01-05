@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +15,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SquadCreateVC" customModule="x_wing_squad_builder" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SquadCreateVC" customModule="xwing_squad_builder" customModuleProvider="target">
             <connections>
                 <outlet property="squadCostTF" destination="vdc-aJ-1B5" id="nnj-ji-xdr"/>
                 <outlet property="squadNameTF" destination="V0N-12-GkC" id="vC1-gL-fpL"/>
@@ -146,8 +145,22 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="tUe-zj-dtO" userLabel="FactionBtns">
                                             <rect key="frame" x="10" y="112" width="180" height="30"/>
                                             <subviews>
-                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxi-0t-jf1">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8h-sC-P1t">
                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="KOv-A8-iru"/>
+                                                        <constraint firstAttribute="height" constant="30" id="wul-ou-hUl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                    <state key="normal" title="0">
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="factionBtnPressed:" destination="-1" eventType="touchUpInside" id="bp7-FM-f4p"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxi-0t-jf1">
+                                                    <rect key="frame" x="50" y="0.0" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="afN-Am-Xqz"/>
                                                         <constraint firstAttribute="height" constant="30" id="jpb-2P-dc5"/>
@@ -161,7 +174,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQQ-h6-fPP">
-                                                    <rect key="frame" x="50" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="100" y="0.0" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="RgL-hp-VvD"/>
                                                         <constraint firstAttribute="width" constant="30" id="XpM-T4-f3x"/>
@@ -175,7 +188,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L7J-y4-GoS">
-                                                    <rect key="frame" x="100" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="150" y="0.0" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="H0u-gg-IfH"/>
                                                         <constraint firstAttribute="width" constant="30" id="hhF-EL-uqy"/>
@@ -186,20 +199,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="factionBtnPressed:" destination="-1" eventType="touchUpInside" id="vle-fs-44V"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x8h-sC-P1t">
-                                                    <rect key="frame" x="150" y="0.0" width="30" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="30" id="KOv-A8-iru"/>
-                                                        <constraint firstAttribute="height" constant="30" id="wul-ou-hUl"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                    <state key="normal" title="0">
-                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="factionBtnPressed:" destination="-1" eventType="touchUpInside" id="bp7-FM-f4p"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

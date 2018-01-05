@@ -17,16 +17,13 @@ class ShipCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(false, animated: animated)
-
-        // Configure the view for the selected state
     }
     
-    func configureCell(shipName: String) {
+    func initUI(shipName: String) {
         shipNameLbl.text = shipName
     }
     

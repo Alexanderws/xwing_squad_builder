@@ -12,8 +12,8 @@ class BackgroundFilterView: UIView {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.alpha = 0.85
+        self.backgroundColor = ColorManager.secondaryColor
         
-        self.alpha = 0.9
     }
-
 }

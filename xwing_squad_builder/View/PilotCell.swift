@@ -16,6 +16,7 @@ class PilotCell: UITableViewCell {
     @IBOutlet weak var pilotSkillLbl: UILabel!
     @IBOutlet weak var squadCostLbl: UILabel!
     @IBOutlet weak var abilityLbl: UILabel!
+    @IBOutlet weak var uniqueIV: UIImageView!
     
     
     override func awakeFromNib() {
@@ -26,14 +27,14 @@ class PilotCell: UITableViewCell {
         super.setSelected(false, animated: animated)
     }
     
-    func configureCell(pilotName: String, pilotSkill: Int, squadCost: Int, abilityText: String) {
+    func initUI(pilotName: String, pilotSkill: Int, squadCost: Int, abilityText: String) {
         self.pilotNameLbl.text = pilotName
         self.pilotSkillLbl.text = String(pilotSkill)
         self.squadCostLbl.text = String(squadCost)
         self.abilityLbl.text = abilityText
     }
     
-    func configureCell(pilot: Pilot) {
+    func initUI(pilot: Pilot) {
         self.pilotNameLbl.text = pilot.name
         self.pilotSkillLbl.text = String(pilot.pilotSkill)
         self.squadCostLbl.text = String(pilot.squadCost)
@@ -42,5 +43,6 @@ class PilotCell: UITableViewCell {
         } else {
             self.abilityLbl.text = pilot.abilityText
         }
+        self.uniqueIV.isHidden = !pilot.isUnique
     }
 }

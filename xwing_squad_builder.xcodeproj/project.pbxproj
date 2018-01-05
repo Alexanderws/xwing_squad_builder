@@ -18,6 +18,14 @@
 		11282BAF1FF3740500C91A60 /* PilotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11282BAE1FF3740500C91A60 /* PilotManager.swift */; };
 		1173F2671FF5B27B0070965C /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1173F2661FF5B27B0070965C /* ColorManager.swift */; };
 		1173F26B1FF5CF540070965C /* UIColor+Rebellion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1173F26A1FF5CF540070965C /* UIColor+Rebellion.swift */; };
+		1173F26E1FF5F7FF0070965C /* EmptyUpgradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1173F26C1FF5F7FF0070965C /* EmptyUpgradeCell.swift */; };
+		1173F26F1FF5F7FF0070965C /* EmptyUpgradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1173F26D1FF5F7FF0070965C /* EmptyUpgradeCell.xib */; };
+		1173F2721FF6047B0070965C /* UpgradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1173F2701FF6047B0070965C /* UpgradeCell.swift */; };
+		1173F2731FF6047B0070965C /* UpgradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1173F2711FF6047B0070965C /* UpgradeCell.xib */; };
+		1173F2761FFCB8400070965C /* UpgradeSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1173F2741FFCB8400070965C /* UpgradeSelectionCell.swift */; };
+		1173F2771FFCB8400070965C /* UpgradeSelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1173F2751FFCB8400070965C /* UpgradeSelectionCell.xib */; };
+		1173F2791FFDA2040070965C /* Array+indexesOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1173F2781FFDA2040070965C /* Array+indexesOf.swift */; };
+		1173F27C1FFE2B6B0070965C /* UpgradeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1173F27B1FFE2B6B0070965C /* UpgradeVM.swift */; };
 		117A768B1FE0C47000D000BA /* ShipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A76891FE0C47000D000BA /* ShipCell.swift */; };
 		117A768C1FE0C47000D000BA /* ShipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117A768A1FE0C47000D000BA /* ShipCell.xib */; };
 		117A769F1FE2151B00D000BA /* ModalSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A769D1FE2151B00D000BA /* ModalSelectionVC.swift */; };
@@ -27,7 +35,7 @@
 		117A76A71FE2207C00D000BA /* ModalSelectionSearchRemoveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A76A51FE2207C00D000BA /* ModalSelectionSearchRemoveVC.swift */; };
 		117A76A81FE2207C00D000BA /* ModalSelectionSearchRemoveVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117A76A61FE2207C00D000BA /* ModalSelectionSearchRemoveVC.xib */; };
 		117A76AA1FE233E500D000BA /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A76A91FE233E500D000BA /* Enums.swift */; };
-		117A76AD1FE3086D00D000BA /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A76AC1FE3086D00D000BA /* LayoutConstants.swift */; };
+		117A76AD1FE3086D00D000BA /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A76AC1FE3086D00D000BA /* LayoutManager.swift */; };
 		117A76B01FE32C1A00D000BA /* PilotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A76AE1FE32C1A00D000BA /* PilotCell.swift */; };
 		117A76B11FE32C1A00D000BA /* PilotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117A76AF1FE32C1A00D000BA /* PilotCell.xib */; };
 		117A76B41FE3486C00D000BA /* MasterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A76B21FE3486C00D000BA /* MasterVC.swift */; };
@@ -42,7 +50,7 @@
 		11A5FB3D1FDC689E0028CFCF /* SquadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A5FB3B1FDC689E0028CFCF /* SquadCell.xib */; };
 		11A5FB411FDC705F0028CFCF /* SquadViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5FB3F1FDC705F0028CFCF /* SquadViewerVC.swift */; };
 		11A5FB421FDC705F0028CFCF /* SquadViewerVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A5FB401FDC705F0028CFCF /* SquadViewerVC.xib */; };
-		11A5FB451FDC9E9D0028CFCF /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5FB441FDC9E9D0028CFCF /* Functions.swift */; };
+		11A5FB451FDC9E9D0028CFCF /* ViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5FB441FDC9E9D0028CFCF /* ViewManager.swift */; };
 		11A5FB6B1FE02F0E0028CFCF /* ships.json in Resources */ = {isa = PBXBuildFile; fileRef = 11A5FB6A1FE02F0E0028CFCF /* ships.json */; };
 		11A5FB6D1FE02F160028CFCF /* pilots.json in Resources */ = {isa = PBXBuildFile; fileRef = 11A5FB6C1FE02F160028CFCF /* pilots.json */; };
 		11A5FB6F1FE02FE10028CFCF /* upgrades.json in Resources */ = {isa = PBXBuildFile; fileRef = 11A5FB6E1FE02FE10028CFCF /* upgrades.json */; };
@@ -98,6 +106,14 @@
 		11282BAE1FF3740500C91A60 /* PilotManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilotManager.swift; sourceTree = "<group>"; };
 		1173F2661FF5B27B0070965C /* ColorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		1173F26A1FF5CF540070965C /* UIColor+Rebellion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Rebellion.swift"; sourceTree = "<group>"; };
+		1173F26C1FF5F7FF0070965C /* EmptyUpgradeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyUpgradeCell.swift; sourceTree = "<group>"; };
+		1173F26D1FF5F7FF0070965C /* EmptyUpgradeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyUpgradeCell.xib; sourceTree = "<group>"; };
+		1173F2701FF6047B0070965C /* UpgradeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeCell.swift; sourceTree = "<group>"; };
+		1173F2711FF6047B0070965C /* UpgradeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpgradeCell.xib; sourceTree = "<group>"; };
+		1173F2741FFCB8400070965C /* UpgradeSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeSelectionCell.swift; sourceTree = "<group>"; };
+		1173F2751FFCB8400070965C /* UpgradeSelectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpgradeSelectionCell.xib; sourceTree = "<group>"; };
+		1173F2781FFDA2040070965C /* Array+indexesOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+indexesOf.swift"; sourceTree = "<group>"; };
+		1173F27B1FFE2B6B0070965C /* UpgradeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeVM.swift; sourceTree = "<group>"; };
 		117A76891FE0C47000D000BA /* ShipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipCell.swift; sourceTree = "<group>"; };
 		117A768A1FE0C47000D000BA /* ShipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShipCell.xib; sourceTree = "<group>"; };
 		117A769D1FE2151B00D000BA /* ModalSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSelectionVC.swift; sourceTree = "<group>"; };
@@ -107,7 +123,7 @@
 		117A76A51FE2207C00D000BA /* ModalSelectionSearchRemoveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalSelectionSearchRemoveVC.swift; sourceTree = "<group>"; };
 		117A76A61FE2207C00D000BA /* ModalSelectionSearchRemoveVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ModalSelectionSearchRemoveVC.xib; sourceTree = "<group>"; };
 		117A76A91FE233E500D000BA /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		117A76AC1FE3086D00D000BA /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
+		117A76AC1FE3086D00D000BA /* LayoutManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		117A76AE1FE32C1A00D000BA /* PilotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PilotCell.swift; sourceTree = "<group>"; };
 		117A76AF1FE32C1A00D000BA /* PilotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PilotCell.xib; sourceTree = "<group>"; };
 		117A76B21FE3486C00D000BA /* MasterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterVC.swift; sourceTree = "<group>"; };
@@ -122,7 +138,7 @@
 		11A5FB3B1FDC689E0028CFCF /* SquadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquadCell.xib; sourceTree = "<group>"; };
 		11A5FB3F1FDC705F0028CFCF /* SquadViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadViewerVC.swift; sourceTree = "<group>"; };
 		11A5FB401FDC705F0028CFCF /* SquadViewerVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquadViewerVC.xib; sourceTree = "<group>"; };
-		11A5FB441FDC9E9D0028CFCF /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		11A5FB441FDC9E9D0028CFCF /* ViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewManager.swift; sourceTree = "<group>"; };
 		11A5FB6A1FE02F0E0028CFCF /* ships.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ships.json; sourceTree = "<group>"; };
 		11A5FB6C1FE02F160028CFCF /* pilots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pilots.json; sourceTree = "<group>"; };
 		11A5FB6E1FE02FE10028CFCF /* upgrades.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = upgrades.json; sourceTree = "<group>"; };
@@ -169,14 +185,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1173F27A1FFE2B450070965C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1173F27B1FFE2B6B0070965C /* UpgradeVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		117A76AB1FE3083F00D000BA /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				117A76A91FE233E500D000BA /* Enums.swift */,
-				117A76AC1FE3086D00D000BA /* LayoutConstants.swift */,
+				117A76AC1FE3086D00D000BA /* LayoutManager.swift */,
 				1173F26A1FF5CF540070965C /* UIColor+Rebellion.swift */,
-				11A5FB441FDC9E9D0028CFCF /* Functions.swift */,
+				11A5FB441FDC9E9D0028CFCF /* ViewManager.swift */,
 				1173F2661FF5B27B0070965C /* ColorManager.swift */,
+				1173F2781FFDA2040070965C /* Array+indexesOf.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -188,6 +213,9 @@
 				117A768A1FE0C47000D000BA /* ShipCell.xib */,
 				117A76AF1FE32C1A00D000BA /* PilotCell.xib */,
 				117A76BF1FE44CCC00D000BA /* SquadPilotCell.xib */,
+				1173F2751FFCB8400070965C /* UpgradeSelectionCell.xib */,
+				1173F2711FF6047B0070965C /* UpgradeCell.xib */,
+				1173F26D1FF5F7FF0070965C /* EmptyUpgradeCell.xib */,
 			);
 			path = "Cell Xib";
 			sourceTree = "<group>";
@@ -195,10 +223,10 @@
 		11A5FB3E1FDC68CD0028CFCF /* VC Xib */ = {
 			isa = PBXGroup;
 			children = (
-				11EC79DE1FF46787003B85BF /* SquadPilotVC.xib */,
 				117A76B31FE3486C00D000BA /* MasterVC.xib */,
 				11F2C6E21FDA155E001A2EE5 /* SquadListVC.xib */,
 				11A5FB401FDC705F0028CFCF /* SquadViewerVC.xib */,
+				11EC79DE1FF46787003B85BF /* SquadPilotVC.xib */,
 				11F2C6B51FDA109C001A2EE5 /* LaunchScreen.storyboard */,
 				11C770AA1FDC439300A301EB /* SquadCreateVC.xib */,
 				117A769E1FE2151B00D000BA /* ModalSelectionVC.xib */,
@@ -244,6 +272,7 @@
 				11CCFCEE1FF43230002F8000 /* Obsolete */,
 				11F2C6DB1FDA10EB001A2EE5 /* Controller */,
 				11F2C6DC1FDA10F1001A2EE5 /* Model */,
+				1173F27A1FFE2B450070965C /* ViewModel */,
 				11F2C6DA1FDA10E0001A2EE5 /* View */,
 				117A76AB1FE3083F00D000BA /* Constants */,
 				11F2C6DD1FDA1198001A2EE5 /* Supporting Files */,
@@ -280,6 +309,9 @@
 				117A76AE1FE32C1A00D000BA /* PilotCell.swift */,
 				117A76BA1FE379C800D000BA /* BackgroundFilterView.swift */,
 				117A76C51FE75F3300D000BA /* DetailViews.swift */,
+				1173F26C1FF5F7FF0070965C /* EmptyUpgradeCell.swift */,
+				1173F2701FF6047B0070965C /* UpgradeCell.swift */,
+				1173F2741FFCB8400070965C /* UpgradeSelectionCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -422,16 +454,19 @@
 				11A5FB3D1FDC689E0028CFCF /* SquadCell.xib in Resources */,
 				11C770AC1FDC439300A301EB /* SquadCreateVC.xib in Resources */,
 				11A5FB421FDC705F0028CFCF /* SquadViewerVC.xib in Resources */,
+				1173F2731FF6047B0070965C /* UpgradeCell.xib in Resources */,
 				117A768C1FE0C47000D000BA /* ShipCell.xib in Resources */,
 				117A76C11FE44CCC00D000BA /* SquadPilotCell.xib in Resources */,
 				11EC79E01FF46787003B85BF /* SquadPilotVC.xib in Resources */,
 				117A76A81FE2207C00D000BA /* ModalSelectionSearchRemoveVC.xib in Resources */,
 				11F2C6E31FDA155E001A2EE5 /* SquadListVC.xib in Resources */,
+				1173F2771FFCB8400070965C /* UpgradeSelectionCell.xib in Resources */,
 				11282BAD1FF361B300C91A60 /* shipId.json in Resources */,
 				11A5FB6D1FE02F160028CFCF /* pilots.json in Resources */,
 				11F2C6B41FDA109C001A2EE5 /* Assets.xcassets in Resources */,
 				117A76A41FE2189B00D000BA /* ModalSelectionReturnVC.xib in Resources */,
 				117A76B11FE32C1A00D000BA /* PilotCell.xib in Resources */,
+				1173F26F1FF5F7FF0070965C /* EmptyUpgradeCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,20 +508,23 @@
 				1173F2671FF5B27B0070965C /* ColorManager.swift in Sources */,
 				117A76A71FE2207C00D000BA /* ModalSelectionSearchRemoveVC.swift in Sources */,
 				117A769F1FE2151B00D000BA /* ModalSelectionVC.swift in Sources */,
-				11A5FB451FDC9E9D0028CFCF /* Functions.swift in Sources */,
+				1173F26E1FF5F7FF0070965C /* EmptyUpgradeCell.swift in Sources */,
+				11A5FB451FDC9E9D0028CFCF /* ViewManager.swift in Sources */,
 				11282BAB1FF33A4700C91A60 /* ShipManager.swift in Sources */,
 				11F2C6AA1FDA109C001A2EE5 /* AppDelegate.swift in Sources */,
 				1173F26B1FF5CF540070965C /* UIColor+Rebellion.swift in Sources */,
 				11CCFCEB1FF42A2C002F8000 /* Condition.swift in Sources */,
 				117A76BB1FE379C800D000BA /* BackgroundFilterView.swift in Sources */,
 				117A76B01FE32C1A00D000BA /* PilotCell.swift in Sources */,
+				1173F2791FFDA2040070965C /* Array+indexesOf.swift in Sources */,
+				1173F27C1FFE2B6B0070965C /* UpgradeVM.swift in Sources */,
 				117A76B41FE3486C00D000BA /* MasterVC.swift in Sources */,
 				11282BA71FF32A2D00C91A60 /* Pilot.swift in Sources */,
 				11CCFCED1FF43211002F8000 /* UpgradeManager.swift in Sources */,
 				11A5FB791FE0B1890028CFCF /* ShipCD.swift in Sources */,
 				11A5FB371FDC56760028CFCF /* Squad.swift in Sources */,
 				11282BAF1FF3740500C91A60 /* PilotManager.swift in Sources */,
-				117A76AD1FE3086D00D000BA /* LayoutConstants.swift in Sources */,
+				117A76AD1FE3086D00D000BA /* LayoutManager.swift in Sources */,
 				11A5FB3C1FDC689E0028CFCF /* SquadCell.swift in Sources */,
 				117A76C01FE44CCC00D000BA /* SquadPilotCell.swift in Sources */,
 				11CCFCE91FF40F5F002F8000 /* Upgrade.swift in Sources */,
@@ -496,6 +534,8 @@
 				117A76C61FE75F3300D000BA /* DetailViews.swift in Sources */,
 				11A5FB7B1FE0B1960028CFCF /* PilotCD.swift in Sources */,
 				11282BA91FF330EA00C91A60 /* Ship.swift in Sources */,
+				1173F2721FF6047B0070965C /* UpgradeCell.swift in Sources */,
+				1173F2761FFCB8400070965C /* UpgradeSelectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,6 @@
 import Foundation
 
 
-
 class SquadPilot: Codable {
     
     private(set) var id: Int!
@@ -19,8 +18,6 @@ class SquadPilot: Codable {
     private(set) var abilityText: String!
     private(set) var pilotSkill: Int!
     private(set) var isUnique: Bool!
-    //private(set) var upgradeSlots = [String: Int]()
-    //private(set) var upgradesAttached = [String: [Int]]()
     private(set) var upgradeSlots = [String]()
     private(set) var attachedUpgrades = [Int]()
     private(set) var baseSquadCost = 0
@@ -45,26 +42,16 @@ class SquadPilot: Codable {
         self.pilotSkill = fromPilot.pilotSkill
         self.squadCost = fromPilot.squadCost
         self.baseSquadCost = self.squadCost
-        //initializeUpgradeSlots(fromArray: (Array(fromPilot.upgradeSlots)))
         self.upgradeSlots = Array(fromPilot.upgradeSlots)
         initAttachedUpgrades()
         initializeShipStats(fromShip: fromPilot.parentShip.first!)
         self.isUnique = fromPilot.isUnique
     }
-    
-    /*func initializeUpgradeSlots(fromArray: [String]){
-        for upgrade in fromArray {
-            if let slotValue = upgradeSlots[upgrade] {
-                upgradeSlots[upgrade] = slotValue + 1
-            } else {
-                upgradeSlots[upgrade] = 1
-            }
-        }
-    }*/
+
     
     func initAttachedUpgrades() {
         for _ in 1...upgradeSlots.count {
-            attachedUpgrades.append(-1)
+            self.attachedUpgrades.append(-1)
         }
     }
     
@@ -76,6 +63,58 @@ class SquadPilot: Codable {
         self.shieldValue = fromShip.shieldValue
     }
     
+    func updateSquadCost(withValue: Int) {
+        self.squadCost += withValue
+    }
+    
+    func attach(upgrade: Upgrade, atIndex: Int) {
+        updateSquadCost(withValue: upgrade.squadCost)
+        if upgrade.slotCount == 1 {
+            self.attachedUpgrades[atIndex] = upgrade.id
+        }
+        else {
+            let compatibleIndexes = self.upgradeSlots.indexesOf(object: upgrade.upgradeType)
+            var availableIndexes = [atIndex]
+            for (_, element) in compatibleIndexes.enumerated() {
+                if self.attachedUpgrades[element] == -1 && element != atIndex {
+                    availableIndexes.append(element)
+                }
+            }
+            if availableIndexes.count >= upgrade.slotCount {
+                for (index, _) in availableIndexes.enumerated() {
+                    if availableIndexes[index] == atIndex {
+                        self.attachedUpgrades[availableIndexes[index]] = upgrade.id
+                        if self.attachedUpgrades.indices.contains(index + 1) {
+                            self.attachedUpgrades[availableIndexes[index + 1]] = -2
+                        } else {
+                            self.attachedUpgrades[availableIndexes[0]] = -2
+                        }
+                    }
+                }
+            } else {
+                self.updateSquadCost(withValue: (-upgrade.squadCost))
+                print("!!! not enough slots to attach upgrade '\(upgrade.name)' !!!")
+            }
+        }
+    }
+    
+    func remove(upgrade atIndex: Int) {
+        if self.attachedUpgrades[atIndex] != -1 {
+            if let upgrade = UpgradeManager.getUpgrade(withId: self.attachedUpgrades[atIndex]) {
+                self.updateSquadCost(withValue: (-upgrade.squadCost))
+                self.attachedUpgrades[atIndex] = -1
+                if upgrade.slotCount >= 1 {
+                    var remainingSlots = upgrade.slotCount - 1
+                    for (index, element) in self.attachedUpgrades.enumerated() {
+                        if index != atIndex && self.upgradeSlots[index] == upgrade.upgradeType && element == -2 && remainingSlots > 0 {
+                            self.attachedUpgrades[index] = -1
+                            remainingSlots -= 1
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 

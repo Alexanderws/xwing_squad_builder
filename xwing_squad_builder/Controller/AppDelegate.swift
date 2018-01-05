@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let masterVC = MasterVC(nibName: "MasterVC", bundle: nil)
         window?.rootViewController = masterVC
         window?.makeKeyAndVisible()
-        
+
         return true
     }
 
