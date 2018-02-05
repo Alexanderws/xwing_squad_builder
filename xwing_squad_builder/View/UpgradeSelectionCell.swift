@@ -50,11 +50,11 @@ class UpgradeSelectionCell: UITableViewCell {
             attackRangeLbl.text = fromUpgradeVM.attackRange
         }
         self.upgradeRestrictionLbl.text = fromUpgradeVM.restrictionText
-        self.firstUpgradeIconIV.image = UIImage(named: "\(fromUpgradeVM.imageName!)black")
+        self.firstUpgradeIconIV.image = UIImage(named: fromUpgradeVM.imageNameBlack)
         if fromUpgradeVM.slotCount < 2 {
             self.secondUpgradeIconIV.isHidden = true
         } else {
-            self.secondUpgradeIconIV.image = UIImage(named: "\(fromUpgradeVM.imageName!)black")
+            self.secondUpgradeIconIV.image = UIImage(named: fromUpgradeVM.imageNameBlack)
         }
     }
     

@@ -22,7 +22,19 @@ class SquadPilotVC: UIViewController {
     @IBOutlet weak var uniquePilotIV: UIImageView!
     @IBOutlet weak var pilotNameLbl: UILabel!
     @IBOutlet weak var abilityTextLbl: UILabel!
-
+    
+    // statValuesView
+    @IBOutlet weak var attackIconIV: UIImageView!
+    @IBOutlet weak var attackValueLbl: UILabel!
+    @IBOutlet weak var agilityIconIV: UIImageView!
+    @IBOutlet weak var agilityValueLbl: UILabel!
+    @IBOutlet weak var hullIconIV: UIImageView!
+    @IBOutlet weak var hullValueLbl: UILabel!
+    @IBOutlet weak var shieldIconIV: UIImageView!
+    @IBOutlet weak var shieldValueLbl: UILabel!
+    
+    
+    @IBOutlet weak var actionBarView: UIView!
     @IBOutlet weak var upgradeCollectionView: UICollectionView!
     @IBOutlet weak var squadCostLbl: UILabel!
     @IBOutlet weak var pilotSquadCostLbl: UILabel!
@@ -34,32 +46,8 @@ class SquadPilotVC: UIViewController {
     
     private var currentIndex: Int = -1
     private var currentUpgradeType: String = ""
-    
-    private var filteredUpgradeSlots: [String] {
-        get {
-            var filtered = selectedSquadPilot.upgradeSlots
-            let emptyIndexes = selectedSquadPilot.attachedUpgrades.indexesOf(object: -2)
-            for i in emptyIndexes {
-                filtered.remove(at: i)
-            }
-            return filtered
-        }
-    }
-    
-    private var filteredAttachedUpgrades: [Int] {
-        get {
-            return selectedSquadPilot.attachedUpgrades.filter { (item) -> Bool in
-                item != -2
-            }
-        }
-    }
-    
-    var selectedSquadPilot: SquadPilot! {
-        didSet {
-            print("selectedSquadPilot -> didSet")
-            //updateSquadCosts()
-        }
-    }
+
+    var selectedSquadPilot: SquadPilot!
     
     convenience init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?, withPilot: SquadPilot, withDelegate: SquadPilotVCDelegate) {
         self.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -105,6 +93,33 @@ class SquadPilotVC: UIViewController {
         let squadCostLimit = squadPilotVCDelegate?.getSelectedSquad()?.squadCostLimit ?? 100
         squadCostLbl.text = "\(squadCost)/\(squadCostLimit)"
         pilotSquadCostLbl.text = String(selectedSquadPilot.squadCost)
+        
+        attackIconIV.image = UIImage(named: AssetManager.getStatIconName(from: "attack", color: "white"))
+        agilityIconIV.image = UIImage(named: AssetManager.getStatIconName(from: "agility", color: "white"))
+        hullIconIV.image = UIImage(named: AssetManager.getStatIconName(from: "hull", color: "white"))
+        shieldIconIV.image = UIImage(named: AssetManager.getStatIconName(from: "shield", color: "white"))
+        attackValueLbl.text = String(selectedSquadPilot.attackValue)
+        agilityValueLbl.text = String(selectedSquadPilot.agilityValue)
+        hullValueLbl.text = String(selectedSquadPilot.hullValue)
+        shieldValueLbl.text = String(selectedSquadPilot.shieldValue)
+        
+        if let ship = ShipManager.getShip(withId: selectedSquadPilot.shipId) {
+            initActionsUI(actions: Array(ship.actions))
+        }
+    }
+    
+    func initActionsUI(actions: [String]) {
+        for i in 1...7 {
+            if let imageView = actionBarView.viewWithTag(i) as? UIImageView {
+                if actions.indices.contains(i-1) {
+                    let action = actions[i-1]
+                    imageView.isHidden = false
+                    imageView.image = UIImage(named: AssetManager.getActionIconName(from: action, color: "white"))
+                } else {
+                    imageView.isHidden = true
+                }
+            }
+        }
     }
     
     func updateUI() {
@@ -119,7 +134,7 @@ class SquadPilotVC: UIViewController {
     func presentUpgradeSelectVC() {
         let faction = squadPilotVCDelegate?.getSelectedSquad()?.faction ?? Faction.mixed
         upgradeSelectVC = ModalSelectionSearchRemoveVC(nibName: "ModalSelectionSearchRemoveVC", bundle: nil, withSquadPilot: selectedSquadPilot, withFaction: faction, withType: currentUpgradeType, selectionDelegate: self)
-        ViewManager.add(asChildViewController: upgradeSelectVC, inView: self.view, fromViewController: self, atLevel: 7)
+        ViewManager.add(asChildViewController: upgradeSelectVC, inView: self.view, fromViewController: self, atLevel: 10)
     }
     
     @IBAction func draggableBtnPressed(_ sender: Any) {
@@ -155,23 +170,16 @@ extension SquadPilotVC: ModalSelectionSearchRemoveVCDelegate {
 // MARK: - UICollectionView Methods
 extension SquadPilotVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return filteredUpgradeSlots.count
+        return selectedSquadPilot.filteredUpgradeSlots.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        //let upgradeType = selectedSquadPilot.upgradeSlots[indexPath.row]
-        //let upgradeId = selectedSquadPilot.attachedUpgrades[indexPath.row]
-        let upgradeType = filteredUpgradeSlots[indexPath.row]
-        let upgradeId = filteredAttachedUpgrades[indexPath.row]
+    
+        let upgradeType = selectedSquadPilot.filteredUpgradeSlots[indexPath.row]
+        let upgradeId = selectedSquadPilot.filteredAttachedUpgrades[indexPath.row]
         if upgradeId == -1 { // Empty slot
             let upgradeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyUpgradeCell", for: indexPath) as! EmptyUpgradeCell
             upgradeCell.initUI(withUpgradetype: upgradeType)
-            return upgradeCell
-        }
-        if upgradeId == -2 { // Wont trigger
-            let upgradeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyUpgradeCell", for: indexPath) as! EmptyUpgradeCell
-            upgradeCell.isHidden = true
             return upgradeCell
         }
         let upgradeCell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpgradeCell", for: indexPath) as! UpgradeCell

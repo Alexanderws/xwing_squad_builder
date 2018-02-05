@@ -22,7 +22,9 @@ class Ship: Object {
     
     let pilots = List<Pilot>()
     let actions = List<String>()
-    let upgrades = List<Upgrade>()
+    let upgrades = LinkingObjects(fromType: Upgrade.self, property: "compatibleShips")
+
+    
     
     override static func primaryKey() -> String? {
         return "id"

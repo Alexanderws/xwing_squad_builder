@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 protocol SquadViewerVCDelegate: class {
     
@@ -26,6 +27,8 @@ class SquadViewerVC: UIViewController {
     @IBOutlet weak var winPercentageLbl: UILabel!
     @IBOutlet weak var timesPlayedLbl: UILabel!
     @IBOutlet weak var squadPilotsCV: UICollectionView!
+    
+    
     
     var shipSelectVC: ModalSelectionVC!
     var pilotSelectVC: ModalSelectionVC!
@@ -72,6 +75,25 @@ class SquadViewerVC: UIViewController {
         timesPlayedLbl.text = "\(currentSquad.timesPlayed)"
     }
     
+    @objc func deletePressed(_ sender: UIButton) {
+        guard let cell = LayoutManager.getCell(for: sender) as? SquadPilotCell else {
+            fatalError("Could not get cell")
+        }
+        cell.resetPosition()
+        guard let index = squadPilotsCV.indexPath(for: cell) else {
+            fatalError("Could not get indexPath")
+        }
+        currentSquad.remove(pilot: index.row)
+        DispatchQueue.main.async {
+            self.squadPilotsCV.deleteItems(at: [index])
+        }
+        updateUI()
+    }
+    
+    @objc func copyPressed(_ sender: UIButton) {
+        
+    }
+    
     func presentShipSelectVC(withFaction: Faction) {
         shipSelectVC = ModalSelectionVC(nibName: "ModalSelectionVC", bundle: nil, withFaction: withFaction, withSelectionType: SelectionType.ship, selectionDelegate: self)
         ViewManager.add(asChildViewController: shipSelectVC, inView: self.view, fromViewController: self, atLevel: 6)
@@ -111,10 +133,13 @@ extension SquadViewerVC: ModalSelectionVCDelegate {
     
     func didSelect(pilot: Pilot) {
         let newSquadPilot = SquadPilot(fromPilot: pilot)
-        currentSquad.addPilot(pilot: newSquadPilot)
+        currentSquad.add(pilot: newSquadPilot)
         ViewManager.remove(asChildViewController: shipSelectVC)
         ViewManager.remove(asChildViewController: pilotSelectVC)
-        squadPilotsCV.reloadData()
+        DispatchQueue.main.async {
+            self.squadPilotsCV.insertItems(at: [IndexPath(row: self.currentSquad.pilots.count - 1, section: 0)])
+        }
+        updateUI()
     }
     
     func cancelPressed(senderType: SelectionType) {
@@ -137,6 +162,10 @@ extension SquadViewerVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let squadPilotCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SquadPilotCell", for: indexPath) as! SquadPilotCell
         let pilot = currentSquad.pilots[indexPath.row]
+        
+        squadPilotCell.deleteBtn.addTarget(self, action: #selector(self.deletePressed(_:)), for: .touchUpInside)
+        squadPilotCell.copyBtn.addTarget(self, action: #selector(self.copyPressed(_:)), for: .touchUpInside)
+
         squadPilotCell.initUI(pilot: pilot)
         return squadPilotCell
     }
@@ -144,15 +173,24 @@ extension SquadViewerVC: UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = 56
-        let width = Int(UIScreen.main.bounds.size.width) - 20
+        var rows = Double(currentSquad.pilots[indexPath.row].upgradeStrings.count) / 2
+        rows = rows.rounded()
+        var height = 56
+        if let cell = collectionView.cellForItem(at: indexPath) as? SquadPilotCell {
+            height += Int(cell.upgradesCV.contentSize.height)
+            print("Cell generated!!!!")
+        }
+        let width = Int(UIScreen.main.bounds.size.width) + 190
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! SquadPilotCell
+        if !cell.isPanned {
         let selectedSquadPilot = currentSquad.pilots[indexPath.row]
-        squadViewerDelegate?.showSquadPilot(withSquadPilot: selectedSquadPilot)
+            squadViewerDelegate?.showSquadPilot(withSquadPilot: selectedSquadPilot)
+        }
     }
-    
+
     
 }

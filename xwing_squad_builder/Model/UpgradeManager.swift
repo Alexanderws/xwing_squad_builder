@@ -36,10 +36,8 @@ class UpgradeManager {
                         factions.append(Faction.mixed.rawValue)
                     }
                     let isLimited = upgradeDictionary["limited"] as? Bool ?? false
-                    var shipSizeLimit = ""
-                    if let sizeLimit = upgradeDictionary["size"] as? [String] {
-                        shipSizeLimit = sizeLimit[0]
-                    }
+                    let shipSizeLimit = upgradeDictionary["size"] as? [String] ?? ["none"]
+                    
                     let squadLimit = upgradeDictionary["squadLimited"] as? Int ?? -1
                     
                     let compatibleShips = upgradeDictionary["ship"] as? [String] ?? [String]()
@@ -56,13 +54,11 @@ class UpgradeManager {
                     }
                     
                     if getUpgrade(withId: id) == nil {
-                        let newUpgrade = Upgrade(name: name, id: id, upgradeType: upgradeType, slotCount: slotCount, squadCost: squadCost, text: text, xws: xws, isUnique: unique, factions: factions, isLimited: isLimited, shipSizeLimit: shipSizeLimit, squadLimit: squadLimit, range: range, attackValue: attackValue, effect: effect, energyLimitIncrease: energyLimitIncrease, hasSquadEffect: hasSquadEffect, condition: condition, dualCard: isDualCard)
+                        let newUpgrade = Upgrade(name: name, id: id, upgradeType: upgradeType, slotCount: slotCount, squadCost: squadCost, text: text, xws: xws, isUnique: unique, factions: factions, isLimited: isLimited, shipSizeLimit: shipSizeLimit[0], squadLimit: squadLimit, range: range, attackValue: attackValue, effect: effect, energyLimitIncrease: energyLimitIncrease, hasSquadEffect: hasSquadEffect, condition: condition, dualCard: isDualCard)
                         
                         for shipName in compatibleShips {
                             if let ship = ShipManager.getShip(withName: shipName) {
                                 newUpgrade.compatibleShips.append(ship)
-                                ship.upgrades.append(newUpgrade)
-                                ShipManager.save(ship: ship)
                             }
                         }
                         self.save(upgrade: newUpgrade)
@@ -98,9 +94,14 @@ class UpgradeManager {
         return upgrades
     }
     
-    class func getUpgrades(withFaction: Faction, ofType: String) -> Results<Upgrade>? {
+    class func getUpgrades(withFaction: Faction, ofType: String, forShip: Ship) -> Results<Upgrade>? {
         let realm = try! Realm()
+        if ofType == "Title" {
+            return forShip.upgrades.filter("%K = %@", "upgradeType", ofType).sorted(byKeyPath: "squadCost", ascending: true)
+        }
         var upgrades = realm.objects(Upgrade.self).filter("%K = %@", "upgradeType", ofType).sorted(byKeyPath: "squadCost", ascending: true)
+        upgrades = upgrades.filter("%K = %@ OR %K = %@", "shipSizeLimit", forShip.shipSize, "shipSizeLimit", "none").sorted(byKeyPath: "squadCost", ascending: true)
+        
         if withFaction == Faction.galacticEmpire {
             upgrades = upgrades.filter("ANY %K = %@ OR ANY %K = %@ OR ANY %K = %@", "factions.type", Faction.galacticEmpire.rawValue, "factions.type", Faction.firstOrder.rawValue, "factions.type", Faction.mixed.rawValue).sorted(byKeyPath: "squadCost", ascending: true)
         } else if withFaction == Faction.rebelAlliance {
@@ -109,6 +110,10 @@ class UpgradeManager {
             upgrades = upgrades.filter("ANY %K = %@ OR ANY %K = %@", "factions.type", Faction.scumAndVillainy.rawValue, "factions.type", Faction.mixed.rawValue).sorted(byKeyPath: "squadCost", ascending: true)
         }
         return upgrades
+    }
+    
+    class func filter(upgrades: Results<Upgrade>, byName: String) -> Results<Upgrade>? {
+        return upgrades.filter("%K contains[cd] %@", "name", byName)
     }
     
     class func save(upgrade: Upgrade) {

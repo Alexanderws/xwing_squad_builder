@@ -27,6 +27,36 @@ class SquadPilot: Codable {
     private(set) var hullValue = 0
     private(set) var shieldValue = 0
     
+    var filteredUpgradeSlots: [String] {
+        get {
+            var filtered = upgradeSlots
+            let emptyIndexes = attachedUpgrades.indexesOf(object: -2)
+            for i in emptyIndexes {
+                filtered.remove(at: i)
+            }
+            return filtered
+        }
+    }
+    
+    var filteredAttachedUpgrades: [Int] {
+        get {
+            return attachedUpgrades.filter { (item) -> Bool in
+                item != -2
+            }
+        }
+    }
+    
+    var upgradeStrings: [String] {
+        get {
+            var strings = [String]()
+            for id in filteredAttachedUpgrades.filter({ (item) -> Bool in item != -1}) {
+                strings.append((UpgradeManager.getUpgrade(withId: id)?.name) ?? "Error upgradeId: (id)")
+            }
+            return strings
+        }
+        
+        
+    }
     
     init(selectedPilot: Int, pilotCost: Int) {
         self.id = selectedPilot

@@ -21,14 +21,9 @@ class EmptyUpgradeCell: UICollectionViewCell {
         self.contentView.translatesAutoresizingMaskIntoConstraints = false
         widthConstraint.constant = LayoutManager.collectionViewWidth
     }
-
-    func initUI(fromUpgrade: Upgrade) {
-        upgradeTypeIV.image = UIImage(named: "uniqueIconBlack18")
-        upgradeTypeLbl.text = fromUpgrade.upgradeType.uppercased()
-    }
     
     func initUI(withUpgradetype: String) {
-        upgradeTypeIV.isHidden = true
+        upgradeTypeIV.image = UIImage(named: AssetManager.getUpgradeIconName(from: withUpgradetype, color: "black"))
         upgradeTypeLbl.text = withUpgradetype.uppercased()
     }
 }

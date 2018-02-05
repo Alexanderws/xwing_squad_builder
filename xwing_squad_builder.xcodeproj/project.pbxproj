@@ -44,6 +44,7 @@
 		117A76C01FE44CCC00D000BA /* SquadPilotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A76BE1FE44CCC00D000BA /* SquadPilotCell.swift */; };
 		117A76C11FE44CCC00D000BA /* SquadPilotCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 117A76BF1FE44CCC00D000BA /* SquadPilotCell.xib */; };
 		117A76C61FE75F3300D000BA /* DetailViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117A76C51FE75F3300D000BA /* DetailViews.swift */; };
+		117C18BC2008143B006C6C69 /* SquadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117C18BB2008143B006C6C69 /* SquadManager.swift */; };
 		11A5FB371FDC56760028CFCF /* Squad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5FB361FDC56760028CFCF /* Squad.swift */; };
 		11A5FB391FDC59110028CFCF /* SquadPilot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5FB381FDC59110028CFCF /* SquadPilot.swift */; };
 		11A5FB3C1FDC689E0028CFCF /* SquadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A5FB3A1FDC689E0028CFCF /* SquadCell.swift */; };
@@ -61,6 +62,10 @@
 		11CCFCE91FF40F5F002F8000 /* Upgrade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CCFCE81FF40F5F002F8000 /* Upgrade.swift */; };
 		11CCFCEB1FF42A2C002F8000 /* Condition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CCFCEA1FF42A2C002F8000 /* Condition.swift */; };
 		11CCFCED1FF43211002F8000 /* UpgradeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CCFCEC1FF43211002F8000 /* UpgradeManager.swift */; };
+		11E9AD4A20001BAF00057877 /* SwipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9AD4920001BAF00057877 /* SwipeCollectionViewCell.swift */; };
+		11E9AD5820050D1B00057877 /* AssetManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9AD5720050D1B00057877 /* AssetManager.swift */; };
+		11E9AD5D2005666800057877 /* SmallUpgradeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9AD5B2005666800057877 /* SmallUpgradeCell.swift */; };
+		11E9AD5E2005666800057877 /* SmallUpgradeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11E9AD5C2005666800057877 /* SmallUpgradeCell.xib */; };
 		11EC79DF1FF46787003B85BF /* SquadPilotVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EC79DD1FF46787003B85BF /* SquadPilotVC.swift */; };
 		11EC79E01FF46787003B85BF /* SquadPilotVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11EC79DE1FF46787003B85BF /* SquadPilotVC.xib */; };
 		11F2C6AA1FDA109C001A2EE5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F2C6A91FDA109C001A2EE5 /* AppDelegate.swift */; };
@@ -132,6 +137,7 @@
 		117A76BE1FE44CCC00D000BA /* SquadPilotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadPilotCell.swift; sourceTree = "<group>"; };
 		117A76BF1FE44CCC00D000BA /* SquadPilotCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquadPilotCell.xib; sourceTree = "<group>"; };
 		117A76C51FE75F3300D000BA /* DetailViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViews.swift; sourceTree = "<group>"; };
+		117C18BB2008143B006C6C69 /* SquadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadManager.swift; sourceTree = "<group>"; };
 		11A5FB361FDC56760028CFCF /* Squad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Squad.swift; sourceTree = "<group>"; };
 		11A5FB381FDC59110028CFCF /* SquadPilot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadPilot.swift; sourceTree = "<group>"; };
 		11A5FB3A1FDC689E0028CFCF /* SquadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadCell.swift; sourceTree = "<group>"; };
@@ -149,6 +155,10 @@
 		11CCFCE81FF40F5F002F8000 /* Upgrade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upgrade.swift; sourceTree = "<group>"; };
 		11CCFCEA1FF42A2C002F8000 /* Condition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Condition.swift; sourceTree = "<group>"; };
 		11CCFCEC1FF43211002F8000 /* UpgradeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradeManager.swift; sourceTree = "<group>"; };
+		11E9AD4920001BAF00057877 /* SwipeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCollectionViewCell.swift; sourceTree = "<group>"; };
+		11E9AD5720050D1B00057877 /* AssetManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetManager.swift; sourceTree = "<group>"; };
+		11E9AD5B2005666800057877 /* SmallUpgradeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallUpgradeCell.swift; sourceTree = "<group>"; };
+		11E9AD5C2005666800057877 /* SmallUpgradeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SmallUpgradeCell.xib; sourceTree = "<group>"; };
 		11EC79DD1FF46787003B85BF /* SquadPilotVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadPilotVC.swift; sourceTree = "<group>"; };
 		11EC79DE1FF46787003B85BF /* SquadPilotVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SquadPilotVC.xib; sourceTree = "<group>"; };
 		11F2C6A61FDA109C001A2EE5 /* xwing_squad_builder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = xwing_squad_builder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,11 +212,13 @@
 				11A5FB441FDC9E9D0028CFCF /* ViewManager.swift */,
 				1173F2661FF5B27B0070965C /* ColorManager.swift */,
 				1173F2781FFDA2040070965C /* Array+indexesOf.swift */,
+				11E9AD5720050D1B00057877 /* AssetManager.swift */,
+				117C18BB2008143B006C6C69 /* SquadManager.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
 		};
-		117A76C21FE737E000D000BA /* Cell Xib */ = {
+		117A76C21FE737E000D000BA /* View Xib */ = {
 			isa = PBXGroup;
 			children = (
 				11A5FB3B1FDC689E0028CFCF /* SquadCell.xib */,
@@ -216,11 +228,12 @@
 				1173F2751FFCB8400070965C /* UpgradeSelectionCell.xib */,
 				1173F2711FF6047B0070965C /* UpgradeCell.xib */,
 				1173F26D1FF5F7FF0070965C /* EmptyUpgradeCell.xib */,
+				11E9AD5C2005666800057877 /* SmallUpgradeCell.xib */,
 			);
-			path = "Cell Xib";
+			path = "View Xib";
 			sourceTree = "<group>";
 		};
-		11A5FB3E1FDC68CD0028CFCF /* VC Xib */ = {
+		11A5FB3E1FDC68CD0028CFCF /* ViewController Xib */ = {
 			isa = PBXGroup;
 			children = (
 				117A76B31FE3486C00D000BA /* MasterVC.xib */,
@@ -233,7 +246,7 @@
 				117A76A21FE2189B00D000BA /* ModalSelectionReturnVC.xib */,
 				117A76A61FE2207C00D000BA /* ModalSelectionSearchRemoveVC.xib */,
 			);
-			path = "VC Xib";
+			path = "ViewController Xib";
 			sourceTree = "<group>";
 		};
 		11CCFCEE1FF43230002F8000 /* Obsolete */ = {
@@ -301,10 +314,11 @@
 		11F2C6DA1FDA10E0001A2EE5 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				117A76C21FE737E000D000BA /* Cell Xib */,
-				11A5FB3E1FDC68CD0028CFCF /* VC Xib */,
+				117A76C21FE737E000D000BA /* View Xib */,
+				11A5FB3E1FDC68CD0028CFCF /* ViewController Xib */,
 				11A5FB3A1FDC689E0028CFCF /* SquadCell.swift */,
 				117A76BE1FE44CCC00D000BA /* SquadPilotCell.swift */,
+				11E9AD5B2005666800057877 /* SmallUpgradeCell.swift */,
 				117A76891FE0C47000D000BA /* ShipCell.swift */,
 				117A76AE1FE32C1A00D000BA /* PilotCell.swift */,
 				117A76BA1FE379C800D000BA /* BackgroundFilterView.swift */,
@@ -312,6 +326,7 @@
 				1173F26C1FF5F7FF0070965C /* EmptyUpgradeCell.swift */,
 				1173F2701FF6047B0070965C /* UpgradeCell.swift */,
 				1173F2741FFCB8400070965C /* UpgradeSelectionCell.swift */,
+				11E9AD4920001BAF00057877 /* SwipeCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,6 +465,7 @@
 				117A76A01FE2151B00D000BA /* ModalSelectionVC.xib in Resources */,
 				117A76B51FE3486C00D000BA /* MasterVC.xib in Resources */,
 				11A5FB6F1FE02FE10028CFCF /* upgrades.json in Resources */,
+				11E9AD5E2005666800057877 /* SmallUpgradeCell.xib in Resources */,
 				11A5FB6B1FE02F0E0028CFCF /* ships.json in Resources */,
 				11A5FB3D1FDC689E0028CFCF /* SquadCell.xib in Resources */,
 				11C770AC1FDC439300A301EB /* SquadCreateVC.xib in Resources */,
@@ -514,12 +530,15 @@
 				11F2C6AA1FDA109C001A2EE5 /* AppDelegate.swift in Sources */,
 				1173F26B1FF5CF540070965C /* UIColor+Rebellion.swift in Sources */,
 				11CCFCEB1FF42A2C002F8000 /* Condition.swift in Sources */,
+				11E9AD5820050D1B00057877 /* AssetManager.swift in Sources */,
 				117A76BB1FE379C800D000BA /* BackgroundFilterView.swift in Sources */,
 				117A76B01FE32C1A00D000BA /* PilotCell.swift in Sources */,
 				1173F2791FFDA2040070965C /* Array+indexesOf.swift in Sources */,
 				1173F27C1FFE2B6B0070965C /* UpgradeVM.swift in Sources */,
 				117A76B41FE3486C00D000BA /* MasterVC.swift in Sources */,
 				11282BA71FF32A2D00C91A60 /* Pilot.swift in Sources */,
+				11E9AD4A20001BAF00057877 /* SwipeCollectionViewCell.swift in Sources */,
+				117C18BC2008143B006C6C69 /* SquadManager.swift in Sources */,
 				11CCFCED1FF43211002F8000 /* UpgradeManager.swift in Sources */,
 				11A5FB791FE0B1890028CFCF /* ShipCD.swift in Sources */,
 				11A5FB371FDC56760028CFCF /* Squad.swift in Sources */,
@@ -533,6 +552,7 @@
 				11A5FB411FDC705F0028CFCF /* SquadViewerVC.swift in Sources */,
 				117A76C61FE75F3300D000BA /* DetailViews.swift in Sources */,
 				11A5FB7B1FE0B1960028CFCF /* PilotCD.swift in Sources */,
+				11E9AD5D2005666800057877 /* SmallUpgradeCell.swift in Sources */,
 				11282BA91FF330EA00C91A60 /* Ship.swift in Sources */,
 				1173F2721FF6047B0070965C /* UpgradeCell.swift in Sources */,
 				1173F2761FFCB8400070965C /* UpgradeSelectionCell.swift in Sources */,

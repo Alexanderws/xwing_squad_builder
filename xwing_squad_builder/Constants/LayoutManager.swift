@@ -19,5 +19,16 @@ class LayoutManager {
     static let modalSelectionVCheight = screenHeight - 100
     static let modalSelectionVCwidth = screenWidth - 60
     
+    class func getCell(for view:UIView) -> UICollectionViewCell? {
+        var superView = view.superview
+        while superView != nil {
+            if superView is UICollectionViewCell {
+                return superView as? UICollectionViewCell
+            } else {
+                superView = superView?.superview
+            }
+        }
+        return nil
+    }
 }
 

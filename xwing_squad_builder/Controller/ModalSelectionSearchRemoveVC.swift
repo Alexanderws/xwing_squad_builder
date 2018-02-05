@@ -21,7 +21,7 @@ class ModalSelectionSearchRemoveVC: UIViewController {
     @IBOutlet weak var topLbl: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var selectionTableView: UITableView!
-    
+    @IBOutlet weak var upgradeIconIV: UIImageView!
     
     var modalSelectionVCDelegate: ModalSelectionSearchRemoveVCDelegate!
     
@@ -56,6 +56,7 @@ class ModalSelectionSearchRemoveVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.searchTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         initSelectionTableView()
         initUI()
     }
@@ -71,14 +72,41 @@ class ModalSelectionSearchRemoveVC: UIViewController {
     
     func initUI() {
         topLbl.text = selectedType
+        upgradeIconIV.image = UIImage(named: UpgradeVM(fromType: selectedType).imageNameBlack)
     }
     
     func initSelectionTableView() {
-        upgradeList = UpgradeManager.getUpgrades(withFaction: squadFaction, ofType: selectedType)
+        initUpgradeList()
         selectionTableView.register(UINib(nibName: "UpgradeSelectionCell", bundle: nil), forCellReuseIdentifier: "UpgradeSelectionCell")
         selectionTableView.dataSource = self
         selectionTableView.delegate = self
     }
+    
+    func initUpgradeList() {
+        upgradeList = UpgradeManager.getUpgrades(withFaction: squadFaction, ofType: selectedType, forShip: ShipManager.getShip(withId: selectedSquadPilot.shipId)!)
+        selectionTableView.reloadData()
+    }
+    
+    func filterUpgradeList(byName: String) {
+        upgradeList = UpgradeManager.filter(upgrades: upgradeList!, byName: byName)
+        selectionTableView.reloadData()
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if searchTextField.text?.count == 0 {
+            initUpgradeList()
+        } else {
+            filterUpgradeList(byName: searchTextField.text ?? "")
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        filterUpgradeList(byName: searchBar.text ?? "")
+        DispatchQueue.main.async {
+            searchBar.resignFirstResponder()
+        }
+    }
+    
 
     @IBAction func removeBtnPressed(_ sender: UIButton) {
         modalSelectionVCDelegate?.removeUpgrade()
@@ -89,11 +117,18 @@ class ModalSelectionSearchRemoveVC: UIViewController {
     }
     
     @IBAction func clearBtnPressed(_ sender: UIButton) {
+        searchTextField.text = ""
+        initUpgradeList()
+        DispatchQueue.main.async {
+            self.searchTextField.resignFirstResponder()
+        }
     }
     
 
 }
 
+
+// MARK: - TableView Methods
 extension ModalSelectionSearchRemoveVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -114,10 +149,8 @@ extension ModalSelectionSearchRemoveVC: UITableViewDataSource, UITableViewDelega
             modalSelectionVCDelegate?.attach(upgrade: upgrade)
         }
     }
-    
-    
-    
-    
-    
-    
 }
+
+
+
+

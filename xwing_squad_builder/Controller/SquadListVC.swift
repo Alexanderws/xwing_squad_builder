@@ -45,7 +45,6 @@ class SquadListVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         initSquadList()
-        initShipPilotData()
     }
     
     func initSquadList() {
@@ -57,11 +56,7 @@ class SquadListVC: UIViewController {
         }
     }
     
-    func initShipPilotData() {
-        ShipManager.initShips()
-        PilotManager.initPilots()
-        UpgradeManager.initUpgrades()
-    }
+
     
     
     func refreshSquadList() {
@@ -74,15 +69,6 @@ class SquadListVC: UIViewController {
         squadCreateVC.modalPresentationStyle = .custom
         self.present(squadCreateVC, animated: true, completion: nil)
     }
-    
-    // TODO: Clean up
-    /*func presentSquadViewerVC(withSquad: Squad) {
-        squadViewerVC = SquadViewerVC(nibName: "SquadViewerVC", bundle: nil)
-        squadViewerVC.squadViewerDelegate = self
-        squadViewerVC.currentSquad = withSquad
-        squadViewerVC.modalPresentationStyle = .custom
-        self.present(squadViewerVC, animated: true, completion: nil)
-    }*/
     
     
     @IBAction func newSquadBtnPressed(_ sender: Any) {
@@ -109,18 +95,6 @@ extension SquadListVC: SquadCreateVCDelegate {
     }
 }
 
-
-/*extension SquadListVC: SquadViewerVCDelegate {
-    func showSquadPilot(withSquadPilot: SquadPilot) {
-        
-    }
-    
-    
-    func closeSquadViewer() {
-        dismiss(animated: true, completion: nil)
-        refreshSquadList()
-    }
-}*/
 
 
 extension SquadListVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

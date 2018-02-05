@@ -50,11 +50,11 @@ class UpgradeCell: UICollectionViewCell {
             attackRangeLbl.text = fromUpgradeVM.attackRange
         }
         self.upgradeRestrictionLbl.text = fromUpgradeVM.restrictionText
-        self.firstUpgradeIconIV.image = UIImage(named: "\(fromUpgradeVM.imageName!)white")
+        self.firstUpgradeIconIV.image = UIImage(named: "\(fromUpgradeVM.imageNameWhite)")
         if fromUpgradeVM.slotCount < 2 {
             self.secondUpgradeIconIV.isHidden = true
         } else {
-            self.secondUpgradeIconIV.image = UIImage(named: "\(fromUpgradeVM.imageName!)white")
+            self.secondUpgradeIconIV.image = UIImage(named: "\(fromUpgradeVM.imageNameWhite)")
         }
     }
     

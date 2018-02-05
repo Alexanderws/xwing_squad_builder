@@ -22,6 +22,7 @@ class MasterVC: UIViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        initShipPilotData()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,6 +38,11 @@ class MasterVC: UIViewController {
         ViewManager.add(asChildViewController: squadListVC, inView: containerView, fromViewController: self, atLevel: 2)
     }
 
+    func initShipPilotData() {
+        ShipManager.initShips()
+        PilotManager.initPilots()
+        UpgradeManager.initUpgrades()
+    }
     
     
     
@@ -73,6 +79,9 @@ extension MasterVC: SquadPilotVCDelegate {
     }
     
     func closeSquadPilot() {
+        squadViewerVC.updateUI()
+        print("closeSquadPilot: upgrades - \(squadPilotVC.selectedSquadPilot.upgradeStrings)")
+        squadViewerVC.squadPilotsCV.reloadData()
         ViewManager.remove(asChildViewController: squadPilotVC)
     }
     

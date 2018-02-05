@@ -44,8 +44,18 @@ class Squad: Codable {
         self.squadCostLimit = squadCostLimit
     }
     
-    func addPilot(pilot: SquadPilot) {
+    func add(pilot: SquadPilot) {
         pilots.append(pilot)
+        updateValues()
+    }
+    
+    func remove(pilot: SquadPilot) {
+        pilots = pilots.filter() { $0 !== pilot }
+        updateValues()
+    }
+    
+    func remove(pilot atIndex: Int) {
+        pilots.remove(at: atIndex)
         updateValues()
     }
     

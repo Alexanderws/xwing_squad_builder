@@ -10,22 +10,24 @@ import Foundation
 
 class UpgradeVM {
     
-    var name: String!
-    var isUnique: Bool!
-    var text: String!
-    var squadCost: Int!
-    var imageName: String!
-    var slotCount: Int!
-    var restrictionText: String!
+    var name: String = ""
+    var isUnique: Bool = false
+    var text: String = ""
+    var squadCost: Int = 0
+    var imageNameBlack: String = ""
+    var imageNameWhite: String = ""
+    var slotCount: Int = 0
+    var restrictionText: String = ""
     var isWeapon: Bool = false
-    var attackValue: Int!
-    var attackRange: String!
+    var attackValue: Int = 0
+    var attackRange: String = ""
     
     init(from upgrade: Upgrade) {
         self.name = upgrade.name
         self.isUnique = upgrade.isUnique
         self.text = upgrade.text
-        self.imageName = getImageName(from: upgrade.upgradeType)
+        self.imageNameBlack = AssetManager.getUpgradeIconName(from: upgrade.upgradeType, color: "black")
+        self.imageNameWhite = AssetManager.getUpgradeIconName(from: upgrade.upgradeType, color: "white")
         self.slotCount = upgrade.slotCount
         self.squadCost = upgrade.squadCost
         self.restrictionText = getRestrictionText(from: upgrade)
@@ -36,47 +38,11 @@ class UpgradeVM {
         }
     }
     
-    func getImageName(from type: String) -> String {
-        switch type {
-        case UpgradeType.elite.rawValue:
-            return UpgradeImageName.elite.rawValue
-        case UpgradeType.turret.rawValue:
-            return UpgradeImageName.turret.rawValue
-        case UpgradeType.torpedo.rawValue:
-            return UpgradeImageName.torpedo.rawValue
-        case UpgradeType.astromech.rawValue:
-            return UpgradeImageName.astromech.rawValue
-        case UpgradeType.missile.rawValue:
-            return UpgradeImageName.missile.rawValue
-        case UpgradeType.crew.rawValue:
-            return UpgradeImageName.crew.rawValue
-        case UpgradeType.cannon.rawValue:
-            return UpgradeImageName.cannon.rawValue
-        case UpgradeType.bomb.rawValue:
-            return UpgradeImageName.bomb.rawValue
-        case UpgradeType.system.rawValue:
-            return UpgradeImageName.system.rawValue
-        case UpgradeType.cargo.rawValue:
-            return UpgradeImageName.cargo.rawValue
-        case UpgradeType.hardpoint.rawValue:
-            return UpgradeImageName.hardpoint.rawValue
-        case UpgradeType.team.rawValue:
-            return UpgradeImageName.team.rawValue
-        case UpgradeType.illicit.rawValue:
-            return UpgradeImageName.illicit.rawValue
-        case UpgradeType.salvagedAstromech.rawValue:
-            return UpgradeImageName.salvagedAstromech.rawValue
-        case UpgradeType.title.rawValue:
-            return UpgradeImageName.title.rawValue
-        case UpgradeType.tech.rawValue:
-            return UpgradeImageName.tech.rawValue
-        case UpgradeType.modification.rawValue:
-            return UpgradeImageName.modification.rawValue
-        default:
-            return UpgradeImageName.unknown.rawValue
-        }
+    init(fromType: String) {
+        self.imageNameBlack = AssetManager.getUpgradeIconName(from: fromType, color: "black")
+        self.imageNameBlack = AssetManager.getUpgradeIconName(from: fromType, color: "white")
     }
-    
+
     func getRestrictionText(from upgrade: Upgrade) -> String {
         var text = ""
         // Check for special cases
@@ -106,7 +72,7 @@ class UpgradeVM {
         if upgrade.compatibleShips.count == 1 {
             text += "\(upgrade.compatibleShips.first!.name.uppercased()) ONLY. "
         }
-        if upgrade.shipSizeLimit != "" {
+        if upgrade.shipSizeLimit != "none" {
             text += "\(upgrade.shipSizeLimit.uppercased()) SHIP ONLY. "
         }
         if upgrade.factions.count > 1 {

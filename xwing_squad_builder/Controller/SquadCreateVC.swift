@@ -104,6 +104,4 @@ extension SquadCreateVC: UITextFieldDelegate {
         view.endEditing(true)
         return true
     }
-    
-    
 }
